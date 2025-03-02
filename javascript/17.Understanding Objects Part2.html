@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Objects Part2</title>
+    <script>
+    var user = new Object();  
+    console.log(user);
+    
+    user.name ='Javascipt Learner'
+    user.sayHi= function(){
+        console.log('Hi');
+
+    }
+    console.log(user.hasOwnProperty('name'));
+    console.log(user.hasOwnProperty('sayHi'));
+    console.log(user.hasOwnProperty('profression'));
+    console.log(user.hasOwnProperty('tostring'));
+     console.log(user.hasOwnProperty('valueof'));
+
+     console.log(user.toString());
+     console.log(user.valueOf());
+// data property attribute
+     var employee1={
+     name:'Ramesh',
+     designation: 'Project Manager',
+     salary:75000
+    };
+    employee1.salary= 175000;
+    var employee2 ={
+        name: 'kumar'
+    };
+
+
+    employee2.name ='Gautam';
+    var employee3 ={};
+    Object.defineProperty(employee3, 'name',{
+     configurable:true,
+     writable: false, 
+     enumerable:true,
+     value: 'krishna'
+    });
+    employee3.name ='mugunda';
+    console.log(employee3.name);
+
+    employee3.designation ='Devoloper';
+    employee3.salary =45000;
+
+    for(prop in employee3){
+        console.log(prop, employee3[prop]);
+
+    }
+    Object.defineProperty(employee3,'salary',{
+        configurable:true,
+        writable:false,
+        enumerable:false
+    });
+
+    console.log('Results after enumerable change');
+    for(prop in employee3){
+        console.log(prop,employee3[prop]);
+    }
+
+    employee3.bonus =10000;
+    console.log(employee3.bonus);
+    delete employee3.bonus;
+    console.log(employee3);
+   
+    employee3.bonus=10000;
+Object.defineProperty(employee3,'bouns',{
+configurable:false
+  }  
+);
+delete employee3.bonus;
+console.log(employee3);
+
+//accessor property
+ var employee4 ={
+    name: 'Deepthi',
+    yoj: 2019
+ };
+ employee4.bonus =10;
+
+ var employee5={
+    name: 'Annadurai',
+    _bonus: 0,
+    yoj: 2010 
+ };
+
+ Object.defineProperty(employee5, 'bonus',{
+    get:function(){
+        return this._bonus;
+    },
+    set:function(newBonus){
+        if(newBonus <= 20 && this.yoj<2015){
+            this._bonus =newBonus;
+        }
+    }
+ });
+ 
+
+ employee5.bonus = 10;
+ console.log(employee5);
+
+
+
+var employee6 ={};
+Object.defineProperties(employee6,{
+    name:{
+        value:'Thambidurai'
+
+    },
+    yoj:{
+        value:2019,
+        writable:true
+    },
+    _bonus:{
+value:0,
+writable: true
+    },
+bonus: {
+    get: function(){
+        return this._bonus;
+    },
+    set: function(newBonus){
+        if (newBonus<= 20 && this.yoj<2015){
+        this._bonus=newBonus;
+    }
+    }
+    }
+});
+
+employee6.bonus =10;
+console.log(employee6);
+
+employee6.yoj =2010;
+employee6.bonus =17;
+console.log(employee6);
+console.log(employee6.bonus);
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+   <h1>Understanding Objects Part2</h1> 
+</body>
+</html>

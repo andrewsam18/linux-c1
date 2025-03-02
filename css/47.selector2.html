@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selector</title>
+    <style>
+        /**acronym,abbr*/
+        [title]{
+            color: crimson;
+        }
+        a [href^="https"]{
+            color: darkkhaki;
+
+        }
+        a[target="_blank"]{
+            color: darkgreen;
+        }
+        img[alt*="icons"]{
+            display: inline-block;
+            border: 3px solid darkblue;
+            padding: 5px;
+        }
+        img[alt~="icons"]{
+               display: inline-block;
+            border: 3px solid darkgreen;
+            padding: 5px;
+        }
+        a[href$=".pdf"]{
+            background: url('/image/toc-pdf.png') no-repeat center right;
+            padding-right: 15px;
+        }
+        a[href$=".doc"]{
+            background: url('/image/worksheet-alt.png') no-repeat center right;
+            padding-right: 15px;
+        }
+        span[class*="small"]{
+            font-size: .5rem;
+        }
+        a#dummy:link{
+            color: coral;
+        }
+          a#dummy:visited{
+            color: cornflowerblue;
+          }  a#dummy:hover{
+            color: blueviolet;
+          }
+            a#dummy:active{
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div id="page">
+        <h1>css selector types</h1>
+        <p><acronym title="Indian Space Research Organization">ISRO</acronym>is an acronym for "Indian Space Organization". <abbr title="professor">prof.</abbr>is an abbreviation for "professor"</p>
+        <p>these link are either external link or will open in new tab. <a href="https://www.google.com">google</a>and <a href="http://www.facebook.com"target="_blank">facebook</a> are big tech companies</p>
+        <p>icons, such as <img src="/image/arrow-right-regular.png" alt=" icons-arrow-right-regular">,<img src="/image/finger-pointer.png" alt="icons- finger-pointer">,<img src="/image/love.png" alt=" icons-love "height="24"width="24">are displayed in dark blue box</p>
+        <p>icons, such as <img src="/image/arrow-right-regular.png" alt="icons arrow-right-regular">,<img src="/image/finger-pointer.png" alt=" icons finger-pointer">,<img src="/image/love.png" alt=" icons love " height="24" width="24">are displayed in dark green box</p>
+        <p>download <a href="/image/toc.pdf">table content</a>and <a href="/image/worksheet.docx">worksheet</a></p>
+        <p><a href="https://www.google.com">google</a>and <a href="http://www.facebook.com"target="_blank">facebook</a>are meant change <span class="bluesmallletter">&#40;how the&#41;</span>world &#40;spends money&#41;</p>
+        <p><a id="dummy" href="#">dummy link</a></p>
+    </div>
+</body>
+</html>

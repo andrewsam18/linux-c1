@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css specificity</title>
+    <style>
+        a{
+            color: crimson;
+        }
+        div ul li a{
+            color: black;
+        }
+        #nav a{
+            color: cadetblue;
+
+        }
+        ul li a{
+            color: brown;
+        }
+         ul a{
+            color: chocolate;
+        }  
+        li a{
+            color: purple;
+
+        }
+       
+    </style>
+</head>
+<body>
+    <div id="page">
+        <h1>CSS Selector Types</h1>
+        <p class="note">this will help to explain class selectors</p>
+        <h2>main navigation</h2>
+        <ul id="nav">
+            <li><a href="45.1.home.html"style="color:black">home</a></li>
+            <li><a href="45.2.about.html">about</a></li>
+            <li><a href="45.3.services.html">services</a>
+                <ul>
+                    <li><a href="#">web design</a></li>
+                    <li><a href="#">web delvelopment</a></li>
+                    <li><a href="#">web hosting</a></li>
+                </ul>
+            </li>
+            <li><a href="45.4.gallery.html">gallery</a></li>
+            <li><a href="45.5.contact.html">contact</a></li>
+        </ul>
+        <h3>section heading</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<a href="#">anchor text</a> Facilis asperiores nisi
+            beatae voluptas, fuga ratione commodi itaque maiores totam nam esse saepe laborum est illo exercitationem
+            dolores necessitatibus rem atque?
+            Cumque beatae error, </p>
+        <p>second paragraph Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae fugiat alias quos eius
+            ullam! Magnam dolore maiores, dicta et voluptatibus saepe veritatis illum consequatur vitae commodi libero,
+            labore eum. Saepe?
+            voluptates ducimus fuga, voluptas quos maiores dolore doloribus, veniam repudiandae iste aspernatur accusamus
+            nam quidem molestiae optio laborum animi soluta. Quia accusantium necessitatibus praesentium, eaque dolorem
+            aliquam?
+            Perspiciatis nam hic repellat fugit ab accusantium obcaecati vitae natus pariatur tempore cum similique possimus
+            dolorem, quis rerum eius necessitatibus? Magnam saepe architecto eligendi voluptatem reiciendis voluptatum ipsam
+            totam sequi!</p>
+        <p class="note">pay attention to notes to understand the concepts clearly</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if and if else statement</title>
+<script>
+    var personOneAge =45;
+    var personTwoAge =54;
+   // if(personOneAge >personTwoAge){
+       // console.log('Person one is older then person two');
+      //      }
+ //   if(personTwoAge >personOneAge){
+
+       // console.log('Person two is older then person one');
+
+
+   // }
+
+//rewitten  with if-else
+/*
+if(personOneAge >personTwoAge){
+ console.log('Person one is older then person two');
+ 
+}else{
+ console.log('Person two is older then person one');
+ 
+}*/
+var personThreeAge =75;
+/*if(personOneAge>personTwoAge && personOneAge >personThreeAge ){
+     console.log('Person one is older then person two and person Three');
+
+}
+if(personTwoAge>personOneAge&&personTwoAge>personThreeAge){
+    console.log('Person two is older then person one and person Three'); 
+}
+if(personThreeAge> personOneAge && personThreeAge>personTwoAge){
+
+} 
+console.log('Person three is older then person one and person Two');
+ } */
+
+//rewritten with if-else-if
+if(personOneAge >personTwoAge && personOneAge > personThreeAge){
+    console.log('Person one is older then person two and person Three');
+
+}else if (personTwoAge >personThreeAge){
+   console.log('Person two is older then person one and person Three'); 
+
+}else{
+    console.log('Person three is older then person one and person Two');
+
+}
+
+// find whether a can be allowed 
+// to take a roller coaster ride
+var age = 16;
+var parentsPermission =true;
+
+if (age >=18||parentsPermission){
+    console.log('you are allowed for this roller coaster ride');
+
+}else{
+        console.log('you are  not allowed for this roller coaster ride');
+
+}
+age =52;
+parentsPermission = false;
+if((age <=16 && parentsPermission === false)||age>=60){    
+      console.log('you are  not allowed for this roller coaster ride');
+}else {
+    console.log('you are allowed for this roller coaster ride');
+
+  }
+
+</script>
+</head>
+<body>
+    <h1>if and if else statement</h1>
+</body>
+</html>

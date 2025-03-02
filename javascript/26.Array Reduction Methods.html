@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Reduction Methods</title>
+    <script>
+      //syntax
+      //[5,20,3,11,15].reduce(function(accumulator,currentvalue,index,array){
+        //statements
+      //},initialValue)
+      var numbers =[10,20,30,40,50];
+       var sum=numbers.reduce(function(accumulator,currentvalue,index){
+        console.log('Interation Number:',index);
+        console.log('Accumulator:',accumulator);
+        console.log('Current Value:',currentvalue);
+        return accumulator+currentvalue;
+       });
+       console.log(sum);
+       var nestedArray =[[1,2],[3,4],[5,6],[7,8]];
+       var flattendArray = nestedArray.reduce(function(accumulator,currentvalue){
+        return accumulator.concat(currentvalue);
+       });
+       console.log(flattendArray);
+       var randomCharacters = ['b', 'a', 't', 'c', 'a', 't', 's', 'a', 't'];
+var uniqueCharacters = randomCharacters.reduce(function (accumulator, currentValue) {
+    if (accumulator.indexOf(currentValue) === -1) {
+        accumulator.push(currentValue);
+    }
+    return accumulator;  // Always return the accumulator
+}, []);
+console.log(uniqueCharacters);
+
+       console.log(uniqueCharacters);
+        
+    </script>
+<body>
+    <h1>Array Reduction Methods</h1>
+</body>
+</html>

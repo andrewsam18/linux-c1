@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Objects Part 1</title>
+    <script>
+
+        var obj = new Object();//Object constructor
+        var obj2 ={};//object literal syntax
+
+        var user1 =new Object();
+        user1.name = 'Andews';
+        user1.profession ='Software Developer';
+        
+        user1.sayHi =function(){
+            console.log ('Hello, ' + user1.name) 
+        } 
+
+        user1.sayHi();
+
+        var user2 ={
+            name: 'Hari',
+            profession: 'Entrepreneur',
+            sayHi: function(){
+                console.log('Hello,' + this .name);
+            }
+        }
+
+        user2.sayHi();
+
+        var user3 =user2;
+        user3.sayHi();
+        user2 =null;
+        user3.sayHi();
+
+        console.log(user3);
+
+      //  first name 
+      //syntax  error
+//user3.first name ='some name';
+
+user1['first name'] = 'some name';
+console.log(user1);
+
+var propName ='first name';
+console.log(user1[propName]);
+
+for(prop in user3){
+    console.log(user3[prop]);
+}
+
+
+
+      
+    </script>
+</head>
+<body>
+   <h1>Understanding Objects Part 1</h1> 
+</body>
+</html>

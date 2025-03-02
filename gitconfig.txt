@@ -1,0 +1,20 @@
+
+Set Up Git:
+git config --global user.name "andrew samuel"
+git config --global user.email "andrewsam18@gmail.com"
+
+other commands
+git clone  https://github.com/andrewsam18/linux-c.git 
+git add (file names)
+git commit -m "(committed message)
+git push -u origin main 
+git remote add origin main (url)
+
+FIX: "Support for password authentication was removed. Please use a personal access token instead."
+
+git clone https://tokenhere@github.com/user_name/repo_name.git
+
+
+Git is a popular version control system used by developers to track changes in their code repositories. GitHub, on the other hand, is a web-based platform that provides hosting for Git repositories and offers additional collaboration features.
+
+In this tutorial, you will discover the step-by-step process of installing and configuring Git and GitHub on Ubuntu. Whether you are a beginner or an experienced developer, this tutorial will provide you with the knowledge and skills to effectively use Git and GitHub in your projects.

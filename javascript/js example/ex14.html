@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+    <link rel="stylesheet" href="ex14.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   
+</head>
+
+<body>
+    <div class="container">
+        <form action="">
+            <i class="fas fa-paper-plane"></i>
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="contact-name" placeholder="Enter your name"onkeyup="validateName()">
+                <span id="name-error"></span>
+            </div>
+            <div class="input-group">
+                <label>Phone No</label>
+                <input type="tel"id="contact-phone" placeholder="123 456 7890" onkeyup="validatePhone()">
+                <span id="phone-error"></span>
+            </div>
+            <div class="input-group">
+                <label>Email Id</label>
+                <input type="email" id="contact-email" placeholder="Enter your Email" onblur="validateEmail()">
+                <span id="email-error"></span>
+
+            </div>
+            <div class="input-group">
+                <label>your message</label>
+                <textarea rows="5"id="contact-message" placeholder="Enter your message" onkeyup="validateMessage()" ></textarea>
+                <span id="message-error"></span>
+            </div>
+            <button onclick="return validateForm()">submit </button>
+            <span id="submit-error"></span>
+
+        </form>
+    </div>
+</body>
+<script src="ex14.js">
+</script>
+
+</html>

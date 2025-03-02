@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refernce Types</title>
+    <script>
+        var person =new Object();
+        console.log(person instanceof Object);
+        person.name = 'andrews';
+        person.profession ='software developer';
+console.log(person.name);
+console.log(person.profession);
+
+person.sayHI=function(){
+    console.log('HI ' + person.name);
+
+}
+person.sayHI();
+var num1 =10;
+var num2 = num1;
+var obj1 = new Object();  
+var obj2 = obj1;
+
+num2 = 20;
+console.log('Num1: ' , num1);
+console.log('Num2: ' , num2);
+
+obj2.newprop = 'By Reference'
+console.log('Obj1: ' , obj1);
+console.log('Obj2: ' , obj2);
+
+    
+
+
+</script>
+</head>
+<body>
+    <h1>Refernce Types</h1>
+</body>
+</html>

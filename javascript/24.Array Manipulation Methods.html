@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Manipulation Methods</title>
+    <script>
+      var fruits =['Apple',' Orange', 'Mango'] ;
+      var freshFruits =fruits;
+      console.log('Fruits:', fruits); 
+      console.log('Fresh:',freshFruits);
+
+       freshFruits.push('Banana');
+      console.log('Fruits:', fruits); 
+      console.log('Fresh:',freshFruits);
+
+      var newFruits = fruits.concat();
+       newFruits.push('Steawberry');
+        console.log('Fruits:', fruits); 
+        console.log('New fruits:',newFruits);
+
+     var additionalFruits =newFruits.concat('Pineapple','kiwi'); 
+     console.log('Additional fruits:', additionalFruits); 
+      var moreFruits=additionalFruits.concat('Blackberry','Blueberry',['Custard Apple','Dates']);
+     console.log('More Fruits:',moreFruits);
+
+     var fristThreeFruits=moreFruits.slice (0,3);
+     console.log('First Three Fruits:',fristThreeFruits);
+     var allOtherFruits= moreFruits.slice(3);
+     console.log('All Other Fruits:',allOtherFruits); 
+     
+     var removedFruits=moreFruits.splice(3,moreFruits.length - 3);
+     console.log('More Fruits:',moreFruits);
+     console.log('Removed Fruits:',removedFruits);
+     var noFruits=moreFruits.splice(0,0, 'Banana');
+      console.log('More Fruits:',moreFruits);
+      console.log('No Fruits:',noFruits);
+
+
+      moreFruits.splice(1,1,'Pine Apple','Custard Apple')
+      console.log('More Fruits:',moreFruits);
+
+
+
+
+
+
+
+
+   </script>
+</head>
+<body>
+    <h1>Array Manipulation Methods</h1>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions Basics</title>
+    <script>
+  //syntax
+  function functionName(param1,param2){
+  //statements
+  }
+  functionName();// calling or invoking function
+  function greet1() {
+    console.log('welcome');
+  }
+  greet1();
+  greet1();
+  greet1();
+  function greet2(message,name){
+    return "Hello,"+name +"!"+ message;
+
+  }
+var greetMessage =greet2('How are you?','andrews');
+console.log(greetMessage);
+function greet3(message,name){
+  if(name){
+    return "Hello," + name +"!" + message;
+  } else {
+    return "Hello, Anonymous!" +message;
+  }
+}
+var greetMessage =greet3('How are you');
+console.log (greetMessage);
+function greet4(message,name){
+  if(name){
+    return 'Hello,' + name+ '!' + message;
+
+  }
+  console.log("I won't be visibile to you if you give name");
+  return 'Hello Anonymous!'+message;
+
+}
+var greetMessage =greet4('How are you','abi');
+console.log(greetMessage);
+
+function willBeDuplicated(){
+  console.log ('I will be duplicated');
+}
+function willBeDuplicated(message){
+  console.log(message);
+  console.log('I am original');
+}
+willBeDuplicated('original or duplicated?');
+var returnedDuplicate =willBeDuplicated('what will you return?');
+console.log(returnedDuplicate);
+
+
+
+
+
+  </script>
+</head>  
+<body>
+   <h1>Function Basics</h1> 
+</body>
+</html>

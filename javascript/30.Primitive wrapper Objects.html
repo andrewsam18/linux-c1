@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primitive wrapper Objects</title>
+    <script>
+       var name ='javascript';
+       console.log(name.substring(0,4));
+     
+       var name = "andrews"; 
+var obj = {};
+console.log(name); 
+console.log(obj);   
+
+var myself = new String('Venket')
+
+console.log(myself);
+
+console.log('andrews'.length);
+console.log(new String('andrews').length);
+
+var yourself = 'javascript learner';
+yourself.color ='Dark';
+console.log(yourself.color);//undefined
+
+var no =new Boolean(false);
+if(no){
+    console.log('iam not boolean false, but an object with false value');
+}
+var trueObj=new Boolean(true);
+console.log(trueObj);
+console.log(trueObj.toString());
+console.log(trueObj.valueOf());
+
+var num = new Number(1000);
+console.log(num);
+console.log(num.toString()); 
+console.log(num.toString(2)); 
+console.log(num.toString(8));  
+console.log(num.toString(16)); 
+console.log(num.toLocaleString()); 
+console.log(num.toFixed(2));
+console.log(num.toExponential(2));
+console.log(num.toPrecision(3));
+console.log(num.toPrecision(4));
+console.log(num.toPrecision(5));
+
+var myself = new String('Venket')
+
+console.log(myself);
+console.log(myself.charAt(1)); // e ' Venkat
+console.log(myself.charCodeAt(1)); // 101
+console.log("✋".codePointAt(1)); // 9733
+console.log(myself.concat(' Raj')); // Venkat Raj
+console.log(myself.endsWith('kat')); // true
+console.log(myself.includes('en')); // true
+console.log("rose is a rose is a rose".indexOf('rose')); // 0
+console.log("rose is a rose is a rose".lastIndexOf('rose')); // 20
+console.log("rose is a rose is a rose".match('rose')); // true
+console.log("...rose is a rose is a rose".matchAll(/[lo|s]/g)); // o, s
+console.log("Read More".padEnd("read more".length + 3, '.')); // Read More...
+console.log("10.25".padStart(6, ' ')); // Makes adding columns easy
+console.log("123.05".padStart(6, ' ')); // Makes adding columns easy
+console.log('listen carefully'.repeat(3)); // One time is not enough, let’s do it thrice
+console.log('Hello, Venkat!'.replace('Venkat', 'Javascript')); // Hello, Javascript!
+console.log('Read More'.search('More')); // 5 (string position)
+console.log('Read More'.slice(0,4)); // Read, if you can’t read more, at least read.
+console.log('one two three'.split(' ')); // [one, two, three]
+console.log('Javascript'.startsWith('Java')); // true
+console.log(' spaceInTheBeginning '.trimStart()); // spaceInTheBeginning
+console.log('spaceInTheEnd '.trimEnd()); // spaceInTheEnd
+console.log(' spaceEverywhere '.trim()); // spaceEverywhere
+    </script>
+<body>
+    <h1>Primitive wrapper Objects</h1>
+</body>
+</html>

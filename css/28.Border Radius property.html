@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Border Radius property</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        h1 {
+            background-color: crimson;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px white;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid crimson;
+            margin: 20px auto;
+            padding: 5px;
+        }
+
+        #top-left {
+            box-shadow: -5px -5px #666666;
+            border-radius: 10px 0;
+        }
+
+        #bottom-right {
+            box-shadow: 5px 5px 5px #666666;
+            border-top-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        #bottom-right-spread {
+            box-shadow: 5px 5px 5px 10px #666666;
+            border-top-right-radius:15px ;
+            border-bottom-left-radius: 15px;
+        }
+
+        #outer-spread {
+            box-shadow: 0 0 10px rgb(233, 233, 153);
+            border-radius: 10px 15px 20px 25px;
+        }
+
+        #inset {
+            box-shadow: inset 0 0 10px yellowgreen;
+            border-radius: 100px;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> border radius property</h1>
+    <div id="top-left">top left</div>
+    <div id="bottom-right">bottom right</div>
+    <div id="bottom-right-spread">bottom right spread</div>
+    <div id="outer-spread">outer spread</div>
+    <div id="inset">inset</div>
+</body>
+
+</html>

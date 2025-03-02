@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function</title>
+    <script>
+     // using  arguments.callee
+    var factorial=function(num){
+    if (num <= 1){
+      return 1;
+    }else{
+      return num * arguments.callee(num - 1);
+    }
+   }
+   console.log('Factorial of 5:',factorial(5));
+   
+   var findFactorial = factorial;
+   console.log('Factorial of 5:',findFactorial(5));
+   factorial =null;
+   console.log('Factorial of 5:',findFactorial(5));
+    //using strict
+    
+    "use strict";
+
+var factorial = function fact(num) { 
+    if (num <= 1) {
+        return 1;
+    } else {
+        return num * fact(num - 1); // Using named function expression instead of `arguments.callee`
+    }
+};
+
+console.log('Factorial of 5:', factorial(5));
+
+var findFactorial = factorial;
+console.log('Factorial of 5:', findFactorial(5));
+
+factorial = null;
+console.log('Factorial of 5:', findFactorial(5)); // Still works because `findFactorial` holds the reference
+</script>
+</head>
+<body>
+   <h1>function</h1> 
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Iterative Methods</title>
+    <script>
+      var availableFruits = ["Apple", "Orange", "Mango", "Banana"];
+      for (var i = 0; i < availableFruits.length; i++) {
+        //some work on array
+      }
+      availableFruits.forEach(function (item, index, array) {
+        console.log("In this fruits array" + array);
+        console.log("Fruit" + item + "is at position" + index);
+      });
+      var priceList = [100, 15, 25, 1000, 550, 675];
+      var discount = 10;
+      var newPriceList = priceList.map(function (price) {
+        return price - (price * 10) / 100;
+      });
+      console.log(newPriceList);
+      var employees = [
+        {
+          role: "Junior Designer",
+          salary: 20000,
+        },
+        {
+          role: "Senior Designer",
+          salary: 40000,
+        },
+        {
+          role: "Junior Developer",
+          salary: 25000,
+        },
+        {
+          role: "Senior Developer",
+          salary: 50000,
+        },
+        {
+          role: "Team Lead",
+          salary: 75000,
+        },
+        {
+          role: "DevOps",
+          salary: 100000,
+        },
+      ];
+      var highPayingJobs = employees.filter(function (employees) {
+        return employees.salary >= 50000;
+      });
+      console.log(highPayingJobs);
+function getResult(markList){
+      var result =markList.every(function(mark){
+        return mark >45;
+      });
+      if(result){
+        return 'All Pass';
+      }else {
+        return 'It seems you failed in some subjcets';
+      }
+    }
+    console.log(getResult([80,70,90,95,91]));
+    console.log(getResult([35,40,45,50,46]));
+ function getResult(result){
+    var result = result.some(isPass);
+if (result){
+    return'only some students are passed'
+
+} else{
+    return 'All student are passed';
+}
+}
+    
+ function isPass(result){
+    return result !=='pass';
+ }   
+ console.log(getResult(['pass','fail','pass','fail']));
+ console.log(getResult(['pass','pass','pass','pass']));
+</script>
+
+  </head>
+  <body>
+    <h1>Array Iterative Methods</h1>
+  </body>
+</html>

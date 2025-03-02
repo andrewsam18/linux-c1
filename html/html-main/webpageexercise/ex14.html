@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>basic form</title>
+    </head>
+<body>
+    <h1>Login from</h1>
+    <form method="post" action="process-form.php">
+        <p>Username:<br>
+            <input type="text"name="Username"placeholder="enter your username"size="15"maxlength="25 "value="admin"></p>
+        <p>password:<br>
+        <input type="password" name="pwd "placeholder="enter your password"></p>
+        <p><input type="submit"name="Login-button" value="send "></p>
+    </form>
+    <h1>contact form</h1>
+    <form>
+        <p>Name:<br><input type="text"name="your_name"></p>
+        <p>Email:<br><input type="text " name="email_id"></p>
+        <p>Subject:<br><input type=" text"name="subject"></p>
+        <p>is this a <br>
+        <input type="radio"name="resquest_type" value="sales">sales resquest?
+        <input type="radio "name="resquest_type" value="support "checked>support  resquest?</p>
+        <p>Message:<br><textarea name="Message" id="Message"cols="30"rows="10"placeholder="enter your message"></textarea></p>
+        <p input type="submit"name="contact form" value="send message "></p>
+    </form>
+</body>
+</html>

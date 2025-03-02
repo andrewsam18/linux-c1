@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating Objects</title>
+    <script>
+  var employee1 = {
+    name: 'Ramesh',
+    designation: 'Project Manager',
+     salary:75000
+  };
+  console.log(employee1 instanceof Object);//true
+
+
+  var socialMedia1={
+    name:'youtube',
+    type: 'video Hosting',
+    popularity:'High'
+  };
+  console.log(socialMedia1 instanceof Object);//true
+    
+function employee(){
+  //
+}
+console.log(employee());
+console.log(new employee());
+
+//function employee(){
+  //var this = {}//implicitly created
+  //other statememts
+  //return this;//implicitly returned
+//}
+
+function Employee(name,designation,salary){
+  this.name = name;
+  this.designation =designation;
+  this.salary = salary;
+}
+var employee1 = new Employee('Ramesh','Project Manager', 750000);
+
+console.log(employee1);
+
+var employee2 = new Employee('Raghav','Developer Trainee', 15000);
+
+console.log(employee2);
+
+console.log(employee1 instanceof Employee);
+console.log(employee1 instanceof Object);
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ </script>
+
+</head>
+<body>
+  <h1>Creating Objects</h1>  
+</body>
+</html>

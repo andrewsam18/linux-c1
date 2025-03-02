@@ -1,0 +1,189 @@
+
+        #page {
+            width: 90%;
+            margin: 0 auto;
+            min-width: 768px;
+          /*  color: blueviolet;
+            padding: 25px;*/
+        }
+
+        #content {
+            background-color: rgb(13, 182, 224);
+            padding: 10px;
+            overflow: hidden;
+            font-family: 'Times New Roman', Times, serif;
+            /* Clears floats inside #content */
+        }
+
+        #left-sidebar {
+            width: 150px;
+            float: left;
+            margin-right: 3;
+
+        }
+
+        #main {
+            width: 50%;
+            float: left;
+
+        }
+        h2{
+            color: green;
+            font-size: 1rem;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        #right-sidebar {
+            width: 150 px;
+            float: right;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        #page {
+            width: 90%;
+            margin: 0 auto;
+            min-width: 768px;
+        }
+
+        #content {
+            background-color: khaki;
+            padding: 10px;
+            overflow: hidden;
+            /* Clears floats inside #content */
+        }
+
+        #left-sidebar {
+            width: 150px;
+            float: left;
+            margin-right: 3;
+
+        }
+
+        #main {
+            width: 50%;
+            float: left;
+        }
+
+        #right-sidebar {
+            width: 150 px;
+            float: right;
+        }
+
+        .clear {
+            clear: both;
+        }
+          #page {
+            width: 90%;
+            margin: 0 auto;
+            min-width: 768px;
+        }
+
+        #content {
+            background-color: khaki;
+            padding: 10px;
+            overflow: hidden;
+            /* Clears floats inside #content */
+        }
+           
+        .service{
+            border: 1px solid crimson;
+            width: 20.8%;
+            float: left;
+            margin-right: 11%;
+            text-align: center right;
+
+        }
+        
+        h2{
+            text-align: center;
+        }
+        #left-sidebar {
+            width: 150px;
+            float: left;
+            margin-right: 3;
+
+      
+        }
+        #main {
+            width: 50%;
+            float: left;
+        }
+
+        #right-sidebar {
+            width: 150 px;
+            float: right;
+        }
+
+        .clear {
+            clear: both;
+        }
+        #page {
+            width: 90%;
+            margin: 0 auto;
+            min-width: 768px;
+        }
+
+        #content {
+            background-color: khaki;
+            padding: 10px;
+            overflow: hidden;
+            /* Clears floats inside #content */
+        }
+
+        #left-sidebar {
+            width: 150px;
+            float: left;
+            margin-right: 3;
+
+        }
+
+        #main {
+            width: 50%;
+            float: left;
+        }
+
+        #right-sidebar {
+            width: 150 px;
+            float: right;
+        }
+
+        .clear {
+            clear: both;
+        }
+       #page {
+            width: 90%;
+            margin: 0 auto;
+            min-width: 768px;
+        }
+
+        #content {
+            background-color: khaki;
+            padding: 10px;
+            overflow: hidden;
+            /* Clears floats inside #content */
+        }
+
+        #left-sidebar {
+            width: 150px;
+            float: left;
+            margin-right: 3;
+
+        }
+
+        #main {
+            width: 50%;
+            float: left;
+            padding-right: 50px;
+        }
+
+        #right-sidebar {
+            width: 150 px;
+            float: right;
+        }
+
+        .clear {
+            clear: both;
+        }

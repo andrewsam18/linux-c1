@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switch statement</title>
+    <script>
+       /* var day =5;
+        if(day ===1){
+            console.log('what monday? week end already over, oh no!?')
+        } else if(day ===2){
+            console.log('tuesday, slowly getting started to work/study');
+        }else if(day ===3){
+            console.log('wednesday.getting used to work/study.two more days');
+        }else if(day ===4){
+            console.log('thursday did i say half the week is gone already?');
+        }else if(day ===5){
+            console.log('finally,its friday');
+        } else if(day ===6){
+            console.log('starting saturday!');
+        } else if (day ===7){
+          console.log('suprising sunday!');
+        }*/
+       day =14;
+        switch( day) {
+            case 1:
+            console.log('what monday? week end already over, oh no!?');
+           
+            case 2: 
+            console.log('tuesday, slowly getting started to work/study');
+            break;
+            case 3:         
+            console.log('wednesday.getting used to work/study.two more days');
+            break;
+            case 4:
+            console.log('thursday did i say half the week is gone already?');
+            break;
+            case 5:
+            console.log('finally,its friday');
+            break;
+          //  case 6:
+           // console.log('starting saturday!');
+       //  break;
+      // case 7:
+         // console.log('suprising sunday!');
+        //  break; 
+        case 6:
+        case 7: 
+            console.log ('week end!');
+          default:
+            console.log('there is no such day in week');
+            
+        }
+        switch('Hello Javascript'){
+            case 'Hello'+'Javascript':
+                console.log('my man!');
+                break;
+                default:
+                    console.log('Go away Javascipt Haters!');
+        }
+ day=6;
+ switch(true){
+    case day > 0 && day < 6:
+        console.log('working Days!:');
+        break
+        case day ===6|| day===7:
+            console.log('Holidays!');
+            break;
+            default:
+                console.log('which day are you talking about?! ');
+ }
+        
+    </script>
+</head>
+<body>
+    <h1>switch statement</h1>
+</body>
+</html>

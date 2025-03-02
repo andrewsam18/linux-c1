@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Conversion Methods</title>
+    <script>
+      var user = {
+        name:'Javascript learner ',
+        sayHi: function(){
+            return 'Hi'
+        },
+        toString: function(){
+            return this.name +'says'+this.sayHi();
+
+        },
+        valueof: function(){
+            return true;
+        },
+        toLocaleString:function(){
+            return'javascript மாணவன் வணக்கம் என்று கூறுகிறார் ';
+        }
+      };
+      
+      
+      console.log (user.toString());
+      console.log(user.valueOf());
+      console.log(user.toLocaleString());
+
+    var fruits = ['Apple' ,'Orange','Mango'];
+    console.log (fruits.toLocaleString());
+    console.log (fruits.toString());
+    alert(fruits.valueOf());
+    
+    
+    console.log(fruits.join());
+    console.log(fruits.join(' - '));
+    console.log(fruits.join(' + '));
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+</head>
+<body>
+    <h1>Array Conversion Methods</h1>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html5 form fields and validation</title>
+</head>
+<body>
+    <h1>html5 form fields and validation</h1>
+    <form action="">
+        <p><label for="email_id">Email</label>
+        <input type="email" name="email_id" id="email_id" required>
+    </p> 
+    <p><label for="age">Age:</label>
+    <input type="number"name="age"id="age"required min="18"max="120">
+</p>
+    <p>
+        <label for="birthday">dob</label>
+        <input type="date" name="birthday" id="birthday">
+    </p>
+    <p>
+        <label for="price"> Price Range:</label>
+        <input type="range" name="price" id="price" min="1"max="1000"step="10">
+    </p>
+    <p> 
+        <label for="website">Website</label>
+        <input type="url" name="website" id="website">
+     </p>
+    <P>
+        <label for="time">raising time</label>
+        <input type="time" name="time" id="time">
+    </P>
+     
+    <p>
+       <label for="vweek">vocation week </label>
+       <input type="week" name="vweek" id="vweek">
+
+    </p><p>
+        <label for="job_search">job search</label>
+        <input type="search" name="job_search"id="job_search">
+        </p>
+          
+      <p>
+        <input type="submit" value="submit" id="submit">
+
+        </p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math object</title>
+    <script>
+     var maxValue = Math.max(1, 2, 3, 10, 777, 888, 88, 78, 63);  
+console.log('Maximum value:', maxValue);
+
+var minValue = Math.min(1, 2, 3, 10, 777, 888, 88, 78, 63);
+console.log('Minimum value:', minValue);
+   console.log(Math.round(35.75));
+   console.log(Math.round(35.50));
+   console.log(Math.round(35.25));
+   console.log(Math.ceil(6.1));
+   console.log(Math.ceil(6.5));
+   console.log(Math.ceil(6.9));
+   console.log(Math.floor(6.1));
+   console.log(Math.floor(6.5));
+   console.log(Math.floor(6.9));
+   console.log(Math.random());
+   console.log(Math.random());
+   console.log(Math.random());
+var randomNumber=Math.floor(Math.random()* numberCholices + firstValue);
+var numberCholices =12;
+ var firstValue =1  
+  var randomNumber = Math.floor(Math.random()*numberCholices+firstValue);
+  console.log('Random number:',randomNumber); 
+   
+   firstValue=100
+   numberCholices=400
+   randomNumber = Math.floor(Math.random()*numberCholices+firstValue);
+   console.log('Random number(100 to 500):',randomNumber); 
+
+   function getRandomNumberBetween(from,to){
+    return Math.floor(Math.random()* (to-from) + from);
+   } 
+   console.log('Random Number between 3 and 8 ',getRandomNumberBetween(3,8));
+   console.log('Random Number between 15 and 25 ',getRandomNumberBetween(15,25));
+   var languages = ["C", "C++", "Java", "JavaScript", "PHP", "Ruby", "Python", "Go", "R"];
+   console.log(' random language:',languages[getRandomNumberBetween(0,languages.length-1)]);
+
+   </script>
+
+<body>
+    <h1>Math object</h1>
+</body>
+</html>
