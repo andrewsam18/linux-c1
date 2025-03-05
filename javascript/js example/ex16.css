@@ -65,7 +65,7 @@ display: none;
     margin: 100px auto 50px ;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 40px;
+    gap: 40px;
 }
 #search-result img{
   width: 100%;
