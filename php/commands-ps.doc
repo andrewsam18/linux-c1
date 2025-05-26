@@ -1,0 +1,4 @@
+New-Item -Path "D:\linux-c\linux-c\php\index.php" -ItemType "File"
+Rename-Item -Path "D:\linux-c\linux-c\php\index.php" -NewName "5.php"
+Copy-Item -Path "D:\linux-c\linux-c\php\5.php" -Destination "D:\backup\5.php"
+Move-Item -Path "D:\linux-c\linux-c\php\5.php" -Destination "D:\backup\5.php"
