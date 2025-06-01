@@ -1,0 +1,11 @@
+"PHP Tags": {
+  "prefix": "php",
+  "body": [
+    "<?php",
+    "",
+    "$0",
+    "",
+    "?>"
+  ],
+  "description": "Insert PHP opening and closing tags"
+}
