@@ -12,7 +12,7 @@ switch ($x) {
         echo("correct option");
         break;
     default:
-        echo("final option");
+        echo("final option");//always true if no other case matches
         break;
 }
 ?>
