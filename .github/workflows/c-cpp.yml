@@ -1,20 +1,21 @@
 name: C/C++ CI on Windows
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-      - name: Set up MSVC
-        uses: ilammy/msvc-dev-cmd@v1
+    - name: Set up Developer Command Prompt
+      uses: ilammy/msvc-dev-cmd@v1
 
-      - name: Build with MSVC
-        run: cl /EHsc your_file.cpp
-
-      - name: Run the program
-        run: your_file.exe
+    - name: Build with cl.exe
+      run: cl /EHsc main.cpp
