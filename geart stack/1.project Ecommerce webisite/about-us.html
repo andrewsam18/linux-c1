@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - RedStore</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="container">
+      <div class="navbar">
+        <div class="logo">
+          <img src="images/logo.png" width="125px" alt="RedStore Logo">
+        </div>
+        <nav>
+          <ul id="MenuItems">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="account.html">Account</a></li>
+          </ul>
+        </nav>
+        <img src="images/cart.png" width="30px" height="30px" alt="Cart">
+        <img src="images/menu.png" class="menu-icon" onclick="menutoggle()" alt="Menu">
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT SECTION -->
+  <div class="about-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <img src="images/image1.png" alt="About RedStore" class="about-img">
+        </div>
+        <div class="col-2">
+          <h1>About RedStore</h1>
+          <p>
+            Welcome to <strong>RedStore</strong>, your number one destination for quality fashion and lifestyle products. 
+            We are dedicated to giving you the very best in style, comfort, and affordability.
+          </p>
+          <p>
+            Founded with a passion for modern trends and everyday essentials, RedStore has grown into a trusted online store 
+            serving customers who value both quality and great design.
+          </p>
+          <p>
+            Our mission is simple — <strong>Make Premium Style Accessible to Everyone.</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY CHOOSE US -->
+  <div class="why-us">
+    <div class="container">
+      <h2 class="title">Why Shop With Us?</h2>
+      <div class="row">
+        <div class="col-3">
+          <h3>✔ Quality Products</h3>
+          <p>Carefully selected materials and long-lasting comfort.</p>
+        </div>
+        <div class="col-3">
+          <h3>🚚 Fast Delivery</h3>
+          <p>Quick and reliable shipping to your doorstep.</p>
+        </div>
+        <div class="col-3">
+          <h3>💳 Secure Payments</h3>
+          <p>Multiple safe and secure payment options.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col-1">
+            <h3>Download Our App</h3>
+            <p>Download App for Android and iOS mobile phones.</p>
+            <div class="app-logo">
+              <img src="images/play-store.png" alt="Play Store" />
+              <img src="images/app-store.png" alt="App Store" />
+            </div>
+          </div>
+
+          <div class="footer-col-2">
+            <img src="images/logo-white.png" alt="RedStore White Logo" />
+            <p>
+              Our purpose is to sustainably make the pleasure and benefits of
+              sports accessible to many.
+            </p>
+          </div>
+
+          <div class="footer-col-3">
+            <h3>Useful Links</h3>
+            <ul>
+              <li>Coupons</li>
+              <li>Blog Post</li>
+              <li>Return Policy</li>
+              <li>Join Affiliate</li>
+            </ul>
+          </div>
+
+          <div class="footer-col-4">
+            <h3>Follow Us</h3>
+            <ul>
+              <li>Facebook</li>
+              <li>Twitter</li>
+              <li>Instagram</li>
+              <li>YouTube</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <p class="copyright">© 2024 RedStore. All rights reserved.</p>
+      </div>
+    </div>
+
+
+  <!-- JS -->
+  <script>
+    var MenuItems = document.getElementById("MenuItems");
+    MenuItems.style.maxHeight = "0px";
+
+    function menutoggle(){
+      if(MenuItems.style.maxHeight == "0px"){
+        MenuItems.style.maxHeight = "200px";
+      } else {
+        MenuItems.style.maxHeight = "0px";
+      }
+    }
+  </script>
+
+</body>
+</html>
