@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap-5</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <style>
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(255, 226, 63, 0.723);
+            color: red;
+        }
+    </style>
+</head>
+
+<div>
+    <!-- <h1>flexbox and Alignment Utilities</h1>
+   <div class="d-flex justify-content-around align-items-center bg-secondary" style="height: 200px;">
+       <div class="d-flex flex-column flex-md-row justify-content-md-center bg-secondary align-items-center " style="height: 300px;">
+
+        <div class="p-3 bg-primary text-white order-md-1">card 1</div>
+        <div class="p-3 bg-primary text-white order-md-2">card 2</div>
+        <div class="p-3 bg-primary text-white order-md-4">card 4</div>
+        <div class="p-3 bg-primary text-white order-md-3">card 3</div>
+
+
+    </div>-->
+    <!--<h1>Accordion & Collapse</h1>
+    <div class="accordion">
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <button class="accordion-button"data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                    <h2>what is bootstrap?</h2>
+                </button>
+            </div>
+        </div>
+        <div  id="collapseOne" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+                <p>Bootstrap is a popular front-end framework for building responsive and mobile-first websites. It
+                    provides a collection of CSS and JavaScript components that make it easier to create visually
+                    appealing and functional web pages.</p>
+            </div>
+        </div>
+    </div>
+</div><div class="accordion">
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <button class="accordion-button"data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                    <h2>what is css?</h2>
+                </button>
+            </div>
+        </div>
+        <div  id="collapseTwo" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+                <p>CSS (Cascading Style Sheets) is a stylesheet language used to describe the presentation of a document written in HTML or XML. It controls the layout, colors, fonts, and other visual aspects of web pages.</p>
+            </div>
+        </div>
+    </div>
+</div>-->
+    <!--<h1>Spinner & Progress Bars</h1>
+    <div class="d-flex justify-content-center py-5">
+        <div class="spinner-border "></div>
+        <div class="spinner-border text-primary"></div>
+        <div class="spinner-border text-success"></div>
+    </div>
+    <div class="progress">
+        <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"
+            style="width: 25%;">Downloading 25%</div>
+    </div>-->
+    <!---<h1>Toasts</h1>
+    <button class="btn btn-primary mb-5" id="liveToastBtn">Show message</button>
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div role="alert" class="toast " id="liveToast" data-bs-autohide="false">
+            <div class="toast-header">
+                <img class="rounded-pill " src="https://picsum.photos/30" alt="">
+                <strong class="me-auto ">message Received </strong>
+                <small>11 Min Ago</small>
+                <button class="btn-close btn-danger" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+                You have a new message from John Doe!
+            </div>
+
+        </div>
+    </div>-->
+    
+    <h1>Carousel</h1>
+    <div id="carouselExample" class="carousel slide bg-dark" data-bs-ride="carousel">
+        <div class="carousel-inner text-light">
+            <div class="carousel-item active" data-bs-interval="2000">
+                <div class="d-flex justify-content-center">
+                    <img src="https://picsum.photos/id/0/200/200" alt="First Slide Image">
+                </div>
+                <div class="carousel-caption">
+                    <h5>First Slide</h5>
+                    <p>Some Text about the person</p>
+                </div>
+            </div>
+            <div class="carousel-item " data-bs-interval="2000">
+                <div class="d-flex justify-content-center">
+                    <img src="https://picsum.photos/id/1/200/200" alt="Second Slide Image">
+                </div>
+            </div>
+            <div class="carousel-item " data-bs-interval="2000">
+                <div class="d-flex justify-content-center">
+                    <img src="https://picsum.photos/id/6/200/200" alt="Third Slide Image">
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<script src="https://github.com/twbs/bootstrap/blob/v5.3.7/site/src/assets/partials/snippets.js"></script>
+<script>
+
+    const toastTrigger = document.getElementById('liveToastBtn')
+    const toastLiveExample = document.getElementById('liveToast')
+
+    if (toastTrigger) {
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+        toastTrigger.addEventListener('click', () => {
+            toastBootstrap.show()
+        })
+    }
+</script>
+
+</html>
