@@ -1,0 +1,12 @@
+print("anderew")
+#variable 
+a=10
+b=10
+print(a+b)
+print(type(a))
+a="andrew"
+print(type(a))
+a=10
+b=20
+c=a+b
+print(c)
