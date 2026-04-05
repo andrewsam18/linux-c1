@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrew's Bootstrap Landing Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="bg-primary text-light position-relative" style="min-height:400px;">
+    <div class="d-flex justify-content-end gap-3 p-3">
+        <a class="text-light text-decoration-none" href="#">Home</a>
+        <a class="text-light text-decoration-none" href="#">About</a>
+        <a class="text-light text-decoration-none" href="#">Services</a>
+    </div>
+
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-6 text-center text-md-start">
+                <h1 class="display-4 fw-bold">Andrew's Bootstrap</h1>
+                <p class="lead">Learn designing quickly!</p>
+                <button class="btn btn-dark border border-light">Get Started</button>
+            </div>
+
+            <div class="col-12 col-md-6 text-center">
+                <img class="img-fluid" style="max-width:250px; clip-path: polygon(50% 0%, 0% 100%,100% 100%);" 
+                src="https://picsum.photos/300" alt="Laptop Woman">
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ================= FEATURES ================= -->
+<section class="container my-5">
+    <div class="row justify-content-center g-3">
+
+        <div class="col-6 col-md-3">
+            <div class="card text-center shadow h-100">
+                <div class="card-body">
+                    <img src="https://picsum.photos/60" class="mb-2">
+                    <h6 class="fw-bold">UI Design</h6>
+                    <small>Build UI quickly</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card text-center shadow h-100">
+                <div class="card-body">
+                    <img src="https://picsum.photos/61" class="mb-2">
+                    <h6 class="fw-bold">Web Dev</h6>
+                    <small>Learn coding fast</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card text-center shadow h-100">
+                <div class="card-body">
+                    <img src="https://picsum.photos/62" class="mb-2">
+                    <h6 class="fw-bold">Mobile Apps</h6>
+                    <small>Create apps easily</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= CAROUSEL ================= -->
+<section>
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner text-center text-light">
+
+        <div class="carousel-item active bg-primary" style="height:220px;">
+            <div class="d-flex align-items-center justify-content-center h-100">
+                <div>
+                    <h2>💡 Learn Bootstrap</h2>
+                    <p>Master design quickly!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item bg-primary" style="height:220px;">
+            <div class="d-flex align-items-center justify-content-center h-100">
+                <div>
+                    <h2>🚀 Boost Career</h2>
+                    <p>Get hired faster!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item bg-primary" style="height:220px;">
+            <div class="d-flex align-items-center justify-content-center h-100">
+                <div>
+                    <h2>🎯 Achieve Goals</h2>
+                    <p>Build real projects!</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="carousel-control-prev" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <button class="carousel-control-next" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="container my-5">
+<h2 class="text-center mb-4">FAQs</h2>
+
+<div class="accordion" id="faqAccordion">
+
+<div class="accordion-item">
+<h2 class="accordion-header">
+<button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#q1">
+Why use Bootstrap?
+</button>
+</h2>
+<div id="q1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+<div class="accordion-body">Bootstrap helps build UI faster.</div>
+</div>
+</div>
+
+<div class="accordion-item">
+<h2 class="accordion-header">
+<button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#q2">
+Is Bootstrap free?
+</button>
+</h2>
+<div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+<div class="accordion-body">Yes, Bootstrap is open-source.</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="container my-5">
+<div class="row justify-content-center">
+<div class="col-md-6 bg-light p-4 rounded shadow">
+
+<h3 class="text-center mb-3">Contact Form</h3>
+
+<form id="contactForm">
+<input class="form-control mb-2" type="email" placeholder="Email" required>
+<input class="form-control mb-2" type="text" placeholder="Name" required>
+<textarea class="form-control mb-2" rows="4" placeholder="Message"></textarea>
+
+<button class="btn btn-primary" id="submitBtn">Submit</button>
+<span id="spinner" class="spinner-border spinner-border-sm text-primary d-none"></span>
+</form>
+
+</div>
+</div>
+</section>
+
+<!-- ================= TOAST ================= -->
+<div class="toast-container position-fixed top-0 end-0 p-3">
+<div class="toast" id="liveToast">
+<div class="toast-header">
+<strong class="me-auto">Success</strong>
+<button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+</div>
+<div class="toast-body">
+Your message sent successfully!
+</div>
+</div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-dark text-light p-3 text-center">
+© 2026 Andrew Bootstrap Project
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+const form = document.getElementById('contactForm');
+const btn = document.getElementById('submitBtn');
+const spinner = document.getElementById('spinner');
+const toastEl = document.getElementById('liveToast');
+
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+    btn.disabled = true;
+    spinner.classList.remove('d-none');
+
+    setTimeout(()=>{
+        btn.disabled = false;
+        spinner.classList.add('d-none');
+        bootstrap.Toast.getOrCreateInstance(toastEl).show();
+        form.reset();
+    },2000);
+});
+</script>
+
+</body>
+</html>
