@@ -1,4 +1,4 @@
-name: CMake on multiple platforms
+name: C/C++ CI
 
 on:
   push:
@@ -31,13 +31,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install GCC
+        if: matrix.compiler == 'gcc'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential
+
       - name: Install Clang
         if: matrix.compiler == 'clang'
         run: |
           sudo apt-get update
           sudo apt-get install -y clang
 
-      - name: Show source files
+      - name: Show C/C++ source files
         shell: bash
         run: |
           echo "===== C files ====="
@@ -46,112 +52,145 @@ jobs:
           echo "===== C++ files ====="
           find cpp -type f -name "*.cpp" -print 2>/dev/null || true
 
-      - name: Create temporary CMakeLists.txt
-        shell: bash
-        run: |
-          cat > CMakeLists.txt <<'EOF'
-          cmake_minimum_required(VERSION 3.20)
-
-          project(LinuxC1
-              LANGUAGES C CXX
-          )
-
-          set(CMAKE_C_STANDARD 11)
-          set(CMAKE_CXX_STANDARD 17)
-
-          file(GLOB_RECURSE C_SOURCES CONFIGURE_DEPENDS
-              "${CMAKE_SOURCE_DIR}/c/*.c"
-          )
-
-          file(GLOB_RECURSE CPP_SOURCES CONFIGURE_DEPENDS
-              "${CMAKE_SOURCE_DIR}/cpp/*.cpp"
-          )
-
-          message(STATUS "C sources:")
-          foreach(SOURCE ${C_SOURCES})
-              message(STATUS "  ${SOURCE}")
-          endforeach()
-
-          message(STATUS "C++ sources:")
-          foreach(SOURCE ${CPP_SOURCES})
-              message(STATUS "  ${SOURCE}")
-          endforeach()
-
-          set(C_INDEX 0)
-
-          foreach(SOURCE ${C_SOURCES})
-              math(EXPR C_INDEX "${C_INDEX} + 1")
-
-              add_library(
-                  c_source_${C_INDEX}
-                  OBJECT
-                  "${SOURCE}"
-              )
-
-              target_include_directories(
-                  c_source_${C_INDEX}
-                  PRIVATE
-                  "${CMAKE_SOURCE_DIR}/c"
-              )
-          endforeach()
-
-          set(CPP_INDEX 0)
-
-          foreach(SOURCE ${CPP_SOURCES})
-              math(EXPR CPP_INDEX "${CPP_INDEX} + 1")
-
-              add_library(
-                  cpp_source_${CPP_INDEX}
-                  OBJECT
-                  "${SOURCE}"
-              )
-
-              target_include_directories(
-                  cpp_source_${CPP_INDEX}
-                  PRIVATE
-                  "${CMAKE_SOURCE_DIR}/cpp"
-              )
-          endforeach()
-
-          if(NOT C_SOURCES AND NOT CPP_SOURCES)
-              message(FATAL_ERROR
-                  "No .c or .cpp source files were found in c/ or cpp/"
-              )
-          endif()
-          EOF
-
-      - name: Configure CMake - GCC
+      - name: Compile C files with GCC
         if: matrix.compiler == 'gcc'
         shell: bash
         run: |
-          cmake -S . -B build \
-            -G "Unix Makefiles" \
-            -DCMAKE_C_COMPILER=gcc \
-            -DCMAKE_CXX_COMPILER=g++
+          mkdir -p build/c
 
-      - name: Configure CMake - Clang
+          found=0
+
+          while IFS= read -r file; do
+            found=1
+
+            name=$(echo "$file" | sed 's#[/\\]#_#g')
+            output="build/c/${name%.c}.o"
+
+            echo "Compiling C: $file"
+
+            gcc \
+              -Wall \
+              -Wextra \
+              -std=c11 \
+              -c "$file" \
+              -o "$output"
+
+          done < <(find c -type f -name "*.c" 2>/dev/null)
+
+          if [ "$found" -eq 0 ]; then
+            echo "No C files found in c/"
+          fi
+
+      - name: Compile C++ files with GCC
+        if: matrix.compiler == 'gcc'
+        shell: bash
+        run: |
+          mkdir -p build/cpp
+
+          found=0
+
+          while IFS= read -r file; do
+            found=1
+
+            name=$(echo "$file" | sed 's#[/\\]#_#g')
+            output="build/cpp/${name%.cpp}.o"
+
+            echo "Compiling C++: $file"
+
+            g++ \
+              -Wall \
+              -Wextra \
+              -std=c++17 \
+              -c "$file" \
+              -o "$output"
+
+          done < <(find cpp -type f -name "*.cpp" 2>/dev/null)
+
+          if [ "$found" -eq 0 ]; then
+            echo "No C++ files found in cpp/"
+          fi
+
+      - name: Compile C files with Clang
         if: matrix.compiler == 'clang'
         shell: bash
         run: |
-          cmake -S . -B build \
-            -G "Unix Makefiles" \
-            -DCMAKE_C_COMPILER=clang \
-            -DCMAKE_CXX_COMPILER=clang++
+          mkdir -p build/c
 
-      - name: Configure CMake - MSVC
-        if: matrix.compiler == 'msvc'
-        shell: pwsh
-        run: |
-          cmake -S . -B build
+          found=0
 
-      - name: Build
-        run: cmake --build build --config Release --parallel
+          while IFS= read -r file; do
+            found=1
 
-      - name: Build summary
+            name=$(echo "$file" | sed 's#[/\\]#_#g')
+            output="build/c/${name%.c}.o"
+
+            echo "Compiling C: $file"
+
+            clang \
+              -Wall \
+              -Wextra \
+              -std=c11 \
+              -c "$file" \
+              -o "$output"
+
+          done < <(find c -type f -name "*.c" 2>/dev/null)
+
+          if [ "$found" -eq 0 ]; then
+            echo "No C files found in c/"
+          fi
+
+      - name: Compile C++ files with Clang
+        if: matrix.compiler == 'clang'
         shell: bash
         run: |
-          echo "======================================"
-          echo "CMake compilation completed successfully"
-          echo "Platform : ${{ matrix.os }}"
-          echo "Compiler : ${{ matrix.compiler }}"
-          echo "======================================"
+          mkdir -p build/cpp
+
+          found=0
+
+          while IFS= read -r file; do
+            found=1
+
+            name=$(echo "$file" | sed 's#[/\\]#_#g')
+            output="build/cpp/${name%.cpp}.o"
+
+            echo "Compiling C++: $file"
+
+            clang++ \
+              -Wall \
+              -Wextra \
+              -std=c++17 \
+              -c "$file" \
+              -o "$output"
+
+          done < <(find cpp -type f -name "*.cpp" 2>/dev/null)
+
+          if [ "$found" -eq 0 ]; then
+            echo "No C++ files found in cpp/"
+          fi
+
+      - name: Setup MSVC
+        if: matrix.compiler == 'msvc'
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Compile C/C++ with MSVC
+        if: matrix.compiler == 'msvc'
+        shell: cmd
+        run: |
+          if exist c (
+            for /R c %%F in (*.c) do (
+              echo Compiling C: %%F
+              cl /nologo /W3 /c "%%F" /Fo"build_%%~nF.obj"
+              if errorlevel 1 exit /b 1
+            )
+          )
+
+          if exist cpp (
+            for /R cpp %%F in (*.cpp) do (
+              echo Compiling C++: %%F
+              cl /nologo /W3 /std:c++17 /c "%%F" /Fo"build_%%~nF.obj"
+              if errorlevel 1 exit /b 1
+            )
+          )
+
+      - name: Build successful
+        run: echo "C/C++ compilation completed successfully."
