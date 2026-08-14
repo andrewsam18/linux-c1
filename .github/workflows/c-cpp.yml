@@ -1,11 +1,10 @@
-
 name: C/C++ CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -15,16 +14,38 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install compiler
-        run: sudo apt-get update && sudo apt-get install -y build-essential
-
-      - name: Build C/C++ files
+      - name: Install C/C++ compiler
         run: |
-          if ls *.c 1> /dev/null 2>&1; then
-            gcc *.c -o program
-          elif ls *.cpp 1> /dev/null 2>&1; then
-            g++ *.cpp -o program
-          else
-            echo "No .c or .cpp source files found."
-            exit 1
+          sudo apt-get update
+          sudo apt-get install -y build-essential
+
+      - name: Find C and C++ files
+        run: |
+          echo "C files:"
+          find c cpp -type f \( -name "*.c" -o -name "*.h" -o -name "*.cpp" -o -name "*.hpp" \) -print
+
+      - name: Compile C files
+        run: |
+          found=0
+          while IFS= read -r file; do
+            found=1
+            echo "Compiling C: $file"
+            gcc -Wall -Wextra -c "$file" -o /tmp/$(basename "$file").o
+          done < <(find c -type f -name "*.c")
+
+          if [ "$found" -eq 0 ]; then
+            echo "No C files found."
+          fi
+
+      - name: Compile C++ files
+        run: |
+          found=0
+          while IFS= read -r file; do
+            found=1
+            echo "Compiling C++: $file"
+            g++ -Wall -Wextra -c "$file" -o /tmp/$(basename "$file").o
+          done < <(find cpp -type f -name "*.cpp")
+
+          if [ "$found" -eq 0 ]; then
+            echo "No C++ files found."
           fi
