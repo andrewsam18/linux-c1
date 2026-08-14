@@ -31,40 +31,31 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # =========================
+      # GCC
+      # =========================
+
       - name: Install GCC
         if: matrix.compiler == 'gcc'
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential
 
-      - name: Install Clang
-        if: matrix.compiler == 'clang'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y clang
-
-      - name: Show C/C++ source files
-        shell: bash
-        run: |
-          echo "===== C files ====="
-          find c -type f -name "*.c" -print 2>/dev/null || true
-
-          echo "===== C++ files ====="
-          find cpp -type f -name "*.cpp" -print 2>/dev/null || true
-
-      - name: Compile C files with GCC
+      - name: Compile C/C++ with GCC
         if: matrix.compiler == 'gcc'
         shell: bash
         run: |
-          mkdir -p build/c
+          mkdir -p build/c build/cpp
 
-          found=0
+          count=0
+
+          echo "===== C files ====="
 
           while IFS= read -r file; do
-            found=1
+            count=$((count + 1))
 
-            name=$(echo "$file" | sed 's#[/\\]#_#g')
-            output="build/c/${name%.c}.o"
+            safe_name=$(echo "$file" | sed 's#[/\\]#_#g')
+            output="build/c/${safe_name%.c}.o"
 
             echo "Compiling C: $file"
 
@@ -77,23 +68,13 @@ jobs:
 
           done < <(find c -type f -name "*.c" 2>/dev/null)
 
-          if [ "$found" -eq 0 ]; then
-            echo "No C files found in c/"
-          fi
-
-      - name: Compile C++ files with GCC
-        if: matrix.compiler == 'gcc'
-        shell: bash
-        run: |
-          mkdir -p build/cpp
-
-          found=0
+          echo "===== C++ files ====="
 
           while IFS= read -r file; do
-            found=1
+            count=$((count + 1))
 
-            name=$(echo "$file" | sed 's#[/\\]#_#g')
-            output="build/cpp/${name%.cpp}.o"
+            safe_name=$(echo "$file" | sed 's#[/\\]#_#g')
+            output="build/cpp/${safe_name%.cpp}.o"
 
             echo "Compiling C++: $file"
 
@@ -106,23 +87,41 @@ jobs:
 
           done < <(find cpp -type f -name "*.cpp" 2>/dev/null)
 
-          if [ "$found" -eq 0 ]; then
-            echo "No C++ files found in cpp/"
+          if [ "$count" -eq 0 ]; then
+            echo "::error::No .c or .cpp files were found in c/ or cpp/"
+            exit 1
           fi
 
-      - name: Compile C files with Clang
+          echo "================================"
+          echo "GCC compilation successful"
+          echo "Files compiled: $count"
+          echo "================================"
+
+      # =========================
+      # Clang
+      # =========================
+
+      - name: Install Clang
+        if: matrix.compiler == 'clang'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang
+
+      - name: Compile C/C++ with Clang
         if: matrix.compiler == 'clang'
         shell: bash
         run: |
-          mkdir -p build/c
+          mkdir -p build/c build/cpp
 
-          found=0
+          count=0
+
+          echo "===== C files ====="
 
           while IFS= read -r file; do
-            found=1
+            count=$((count + 1))
 
-            name=$(echo "$file" | sed 's#[/\\]#_#g')
-            output="build/c/${name%.c}.o"
+            safe_name=$(echo "$file" | sed 's#[/\\]#_#g')
+            output="build/c/${safe_name%.c}.o"
 
             echo "Compiling C: $file"
 
@@ -135,23 +134,13 @@ jobs:
 
           done < <(find c -type f -name "*.c" 2>/dev/null)
 
-          if [ "$found" -eq 0 ]; then
-            echo "No C files found in c/"
-          fi
-
-      - name: Compile C++ files with Clang
-        if: matrix.compiler == 'clang'
-        shell: bash
-        run: |
-          mkdir -p build/cpp
-
-          found=0
+          echo "===== C++ files ====="
 
           while IFS= read -r file; do
-            found=1
+            count=$((count + 1))
 
-            name=$(echo "$file" | sed 's#[/\\]#_#g')
-            output="build/cpp/${name%.cpp}.o"
+            safe_name=$(echo "$file" | sed 's#[/\\]#_#g')
+            output="build/cpp/${safe_name%.cpp}.o"
 
             echo "Compiling C++: $file"
 
@@ -164,9 +153,19 @@ jobs:
 
           done < <(find cpp -type f -name "*.cpp" 2>/dev/null)
 
-          if [ "$found" -eq 0 ]; then
-            echo "No C++ files found in cpp/"
+          if [ "$count" -eq 0 ]; then
+            echo "::error::No .c or .cpp files were found in c/ or cpp/"
+            exit 1
           fi
+
+          echo "================================"
+          echo "Clang compilation successful"
+          echo "Files compiled: $count"
+          echo "================================"
+
+      # =========================
+      # MSVC
+      # =========================
 
       - name: Setup MSVC
         if: matrix.compiler == 'msvc'
@@ -176,21 +175,43 @@ jobs:
         if: matrix.compiler == 'msvc'
         shell: cmd
         run: |
+          if not exist build mkdir build
+
+          set count=0
+
           if exist c (
             for /R c %%F in (*.c) do (
+              set /a count+=1
               echo Compiling C: %%F
-              cl /nologo /W3 /c "%%F" /Fo"build_%%~nF.obj"
+              cl /nologo /W3 /std:c11 /c "%%F" /Fo"build\%%~nF.obj"
+
               if errorlevel 1 exit /b 1
             )
           )
 
           if exist cpp (
             for /R cpp %%F in (*.cpp) do (
+              set /a count+=1
               echo Compiling C++: %%F
-              cl /nologo /W3 /std:c++17 /c "%%F" /Fo"build_%%~nF.obj"
+              cl /nologo /W3 /std:c++17 /c "%%F" /Fo"build\%%~nF.obj"
+
               if errorlevel 1 exit /b 1
             )
           )
+
+          if %count%==0 (
+            echo No .c or .cpp files were found.
+            exit /b 1
+          )
+
+          echo ================================
+          echo MSVC compilation successful
+          echo Files compiled: %count%
+          echo ================================
+
+      # =========================
+      # Success
+      # =========================
 
       - name: Build successful
         run: echo "C/C++ compilation completed successfully."
