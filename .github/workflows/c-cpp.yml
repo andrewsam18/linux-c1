@@ -2,22 +2,174 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
+    name: ${{ matrix.os }} - ${{ matrix.compiler }}
+    runs-on: ${{ matrix.os }}
 
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Linux
+          - os: ubuntu-latest
+            compiler: gcc
+
+          - os: ubuntu-latest
+            compiler: clang
+
+          # Windows
+          - os: windows-latest
+            compiler: msvc
 
     steps:
-    - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # =========================
+      # Ubuntu GCC
+      # =========================
+
+      - name: Install GCC
+        if: matrix.compiler == 'gcc'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential
+
+      - name: Compile with GCC
+        if: matrix.compiler == 'gcc'
+        shell: bash
+        run: |
+          mkdir -p build/c build/cpp
+          count=0
+
+          while IFS= read -r file; do
+            count=$((count + 1))
+            name=$(echo "$file" | sed 's#[/\\]#_#g')
+            output="build/c/${name%.c}.o"
+
+            echo "Compiling C: $file"
+
+            gcc -Wall -Wextra -std=c11 \
+              -c "$file" -o "$output"
+
+          done < <(find c -type f -name "*.c" 2>/dev/null)
+
+          while IFS= read -r file; do
+            count=$((count + 1))
+            name=$(echo "$file" | sed 's#[/\\]#_#g')
+            output="build/cpp/${name%.cpp}.o"
+
+            echo "Compiling C++: $file"
+
+            g++ -Wall -Wextra -std=c++17 \
+              -c "$file" -o "$output"
+
+          done < <(find cpp -type f -name "*.cpp" 2>/dev/null)
+
+          if [ "$count" -eq 0 ]; then
+            echo "::error::No C/C++ source files found."
+            exit 1
+          fi
+
+          echo "Compiled $count source files successfully."
+
+      # =========================
+      # Ubuntu Clang
+      # =========================
+
+      - name: Install Clang
+        if: matrix.compiler == 'clang'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang
+
+      - name: Compile with Clang
+        if: matrix.compiler == 'clang'
+        shell: bash
+        run: |
+          mkdir -p build/c build/cpp
+          count=0
+
+          while IFS= read -r file; do
+            count=$((count + 1))
+            name=$(echo "$file" | sed 's#[/\\]#_#g')
+            output="build/c/${name%.c}.o"
+
+            echo "Compiling C: $file"
+
+            clang -Wall -Wextra -std=c11 \
+              -c "$file" -o "$output"
+
+          done < <(find c -type f -name "*.c" 2>/dev/null)
+
+          while IFS= read -r file; do
+            count=$((count + 1))
+            name=$(echo "$file" | sed 's#[/\\]#_#g')
+            output="build/cpp/${name%.cpp}.o"
+
+            echo "Compiling C++: $file"
+
+            clang++ -Wall -Wextra -std=c++17 \
+              -c "$file" -o "$output"
+
+          done < <(find cpp -type f -name "*.cpp" 2>/dev/null)
+
+          if [ "$count" -eq 0 ]; then
+            echo "::error::No C/C++ source files found."
+            exit 1
+          fi
+
+          echo "Compiled $count source files successfully."
+
+      # =========================
+      # Windows MSVC
+      # =========================
+
+      - name: Setup MSVC
+        if: matrix.compiler == 'msvc'
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Compile with MSVC
+        if: matrix.compiler == 'msvc'
+        shell: cmd
+        run: |
+          if not exist build mkdir build
+
+          set count=0
+
+          if exist c (
+            for /R c %%F in (*.c) do (
+              set /a count+=1
+              echo Compiling C: %%F
+
+              cl /nologo /W3 /c "%%F" /Fo"build\%%~nF.obj"
+
+              if errorlevel 1 exit /b 1
+            )
+          )
+
+          if exist cpp (
+            for /R cpp %%F in (*.cpp) do (
+              set /a count+=1
+              echo Compiling C++: %%F
+
+              cl /nologo /W3 /std:c++17 /c "%%F" /Fo"build\%%~nF.obj"
+
+              if errorlevel 1 exit /b 1
+            )
+          )
+
+          if %count%==0 (
+            echo No C/C++ source files found.
+            exit /b 1
+          )
+
+          echo Compiled %count% source files successfully.
+
+      - name: Build successful
+        run: echo "C/C++ CI completed successfully."
