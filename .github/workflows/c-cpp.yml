@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: configure
+    - name: Attest Build Provenance
+  uses: actions/attest-build-provenance@v4.2.2
       run: ./configure
     - name: make
       run: make
